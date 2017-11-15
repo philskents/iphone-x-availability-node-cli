@@ -183,6 +183,11 @@ function displayStoresAvailable(storesAvailable) {
   console.log(storesAvailableStr);
 }
 
+// Build start message
+const kickoff = {
+  message: 'Starting iPhone X hunt',
+}
+
 // Build the message
 const msg = {
   message: 'iPhone X stock available nearby!',
@@ -197,6 +202,12 @@ const msg = {
  *
  * Continuously check for the device availability until it is available somewhere.
  */
+p.send (kickoff, function (err, result){
+  if (err) {
+    throw err;
+  }
+})
+
 async function requestLoop() {
   // Fetch the storesAvailable array.
   const storesAvailable = await getStoresAvailable();
